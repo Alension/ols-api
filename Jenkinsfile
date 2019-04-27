@@ -13,6 +13,12 @@ pipeline {
                 sh './auto/deploy'
             }
         }
+        stage('Deploy to Test') {
+        agent { docker 'aaronyunan/jdk11-awscli' }
+            steps {
+                sh './auto/deploy'
+            }
+        }
         stage('Deploy to Production') {
             input {
                 message "Should we continue?"
